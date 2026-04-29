@@ -1,0 +1,28 @@
+{
+  "name": "ai-dev-console-extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome Manifest V3 AI debug side panel extension built with Vue 3 + Vite + TypeScript.",
+  "scripts": {
+    "dev": "sh -c 'npm run build:panel -- --watch & npm run build:background -- --watch & npm run build:content -- --watch & npm run build:page-hook -- --watch & wait'",
+    "build": "vue-tsc -p tsconfig.app.json --noEmit && npm run build:panel && npm run build:background && npm run build:content && npm run build:page-hook",
+    "build:panel": "vite build --config vite.config.ts",
+    "build:background": "vite build --config vite.background.config.ts",
+    "build:content": "vite build --config vite.content.config.ts",
+    "build:page-hook": "vite build --config vite.page-hook.config.ts",
+    "typecheck": "vue-tsc -p tsconfig.app.json --noEmit"
+  },
+  "dependencies": {
+    "vue": "^3.5.30"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.29",
+    "@types/node": "^24.12.0",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "@vue/tsconfig": "^0.9.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.0.0",
+    "vue-tsc": "^3.2.5"
+  }
+}
